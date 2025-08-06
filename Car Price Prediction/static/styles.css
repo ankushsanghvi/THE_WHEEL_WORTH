@@ -1,0 +1,123 @@
+body {
+    background: linear-gradient(120deg, #0f2027 0%, #2c5364 60%, #24243e 100%);
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Neon-glow animation for card */
+.card {
+    max-width: 650px;
+    margin: 60px auto;
+    border-radius: 22px;
+    background: rgba(20, 26, 36, 0.95);
+    box-shadow: 0 0 60px 0 #6d83f2cc, 0 4px 40px 0 #000b1e77;
+    padding: 35px 52px;
+    position: relative;
+    animation: neonFade 2s;
+}
+@keyframes neonFade {
+    from {
+        opacity: 0;
+        box-shadow: 0 0 0px #000;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        box-shadow: 0 0 60px 0 #6d83f2cc, 0 4px 40px 0 #000b1e77;
+        transform: translateY(0) scale(1.0);
+    }
+}
+
+h1 {
+    font-weight: 800;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #6d83f2;
+    text-shadow: 0 0 15px #6d83f2, 0 0 25px #4267d6;
+    animation: headlineGlow 2.2s infinite alternate;
+}
+@keyframes headlineGlow {
+    from {text-shadow: 0 0 10px #6d83f2, 0 0 20px #4267d6;}
+    to {text-shadow: 0 0 23px #6d83f2, 0 0 34px #8abbff;}
+}
+
+label {
+    margin-top: 13px;
+    color: #b4c9ee;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.form-select, .form-control {
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    border-radius: 9px;
+    border: 1.5px solid #31417a;
+    background: #171b23;
+    color: #eafffd;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 18px #2123410d;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #66fcf1;
+    outline: none;
+    box-shadow: 0 0 0 0.13rem #45a29e55;
+}
+
+.btn-primary {
+    font-size: 1.22rem;
+    font-weight: 700;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #1e90ff 50%, #38ffea 100%);
+    border: none;
+    box-shadow: 0 0 16px #38ffea60;
+    animation: btnPulse 1.3s infinite alternate;
+}
+
+@keyframes btnPulse {
+    from {box-shadow: 0 0 16px #38ffea60;}
+    to {box-shadow: 0 0 30px #6d83f288;}
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #38ffea 0%, #1e90ff 90%);
+    box-shadow: 0 0 36px #38ffea99;
+    filter: brightness(1.1) contrast(1.08);
+}
+
+/* Input fields animated border */
+.form-control, .form-select {
+    border: 1.7px solid #16213e;
+    animation: borderFlicker 2.8s infinite alternate;
+}
+@keyframes borderFlicker {
+    from {border-color: #16213e;}
+    to {border-color: #6d83f2;}
+}
+
+.result {
+    color: #4afea1;
+    font-size: 1.55rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    animation: resultAppear 1.4s 0.1s forwards;
+    background: #212738;
+    border-radius: 12px;
+    box-shadow: 0 0 22px #38ffea36;
+    padding: 10px 0;
+}
+@keyframes resultAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0px) scale(1.0);
+    }
+}
+
+::-webkit-input-placeholder { color: #6d83f2; opacity: 0.96; }
+::-moz-placeholder { color: #6d83f2; opacity: 0.96; }
+:-ms-input-placeholder { color: #6d83f2; opacity: 0.96; }
+::placeholder { color: #6d83f2; opacity: 0.96; }
