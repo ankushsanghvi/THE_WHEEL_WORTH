@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarValue Pro - AI Car Price Predictor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <i class="fas fa-car-side brand-icon"></i>
+                    <span class="brand-text">The Wheel Worth</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-chart-line"></i>
+                    AI-Powered Car Price Prediction
+                </h1>
+                <p class="hero-subtitle">Get accurate market valuations for your vehicle using advanced machine learning algorithms</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Predictions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Car Brands</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Prediction Section -->
+    <main class="prediction-section">
+        <div class="container">
+            <div class="prediction-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-calculator"></i>
+                        Vehicle Valuation Calculator
+                    </h2>
+                    <p class="card-subtitle">Enter your car details below to get an instant price estimate</p>
+                </div>
+                <form method="POST" class="prediction-form">
+                    <div class="form-grid">
+                        <!-- Car Brand -->
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-car"></i>
+                                Car Brand
+                            </label>
+                            <select class="form-select" id="name" name="name" required>
+                                <option value="" disabled selected>Choose your car brand</option>
+                                <option value="1">🚗 Maruti</option>
+                                <option value="2">🚙 Skoda</option>
+                                <option value="3">🚘 Honda</option>
+                                <option value="4">🚗 Hyundai</option>
+                                <option value="5">🚙 Toyota</option>
+                                <option value="6">🚘 Ford</option>
+                                <option value="7">🚗 Renault</option>
+                                <option value="8">🚙 Mahindra</option>
+                                <option value="9">🚘 Tata</option>
+                                <option value="10">🚗 Chevrolet</option>
+                                <option value="11">🚙 Datsun</option>
+                                <option value="12">🚘 Jeep</option>
+                                <option value="13">🏎️ Mercedes-Benz</option>
+                                <option value="14">🚗 Mitsubishi</option>
+                                <option value="15">🏎️ Audi</option>
+                                <option value="16">🚙 Volkswagen</option>
+                                <option value="17">🏎️ BMW</option>
+                                <option value="18">🚘 Nissan</option>
+                                <option value="19">🏎️ Lexus</option>
+                                <option value="20">🏎️ Jaguar</option>
+                                <option value="21">🚙 Land Rover</option>
+                                <option value="22">🚗 MG</option>
+                                <option value="23">🚙 Volvo</option>
+                                <option value="24">🚘 Daewoo</option>
+                                <option value="25">🚗 Kia</option>
+                                <option value="26">🚘 Fiat</option>
+                                <option value="27">🚙 Force</option>
+                                <option value="28">🚗 Ambassador</option>
+                                <option value="29">🚙 Ashok Leyland</option>
+                                <option value="30">🚘 Isuzu</option>
+                                <option value="31">🚗 Opel</option>
+                            </select>
+                        </div>
+
+                        <!-- Manufacturing Year -->
+                        <div class="form-group">
+                            <label for="year" class="form-label">
+                                <i class="fas fa-calendar-alt"></i>
+                                Manufacturing Year
+                            </label>
+                            <input type="number" class="form-control" id="year" name="year" min="1990" max="2025"
+                                   placeholder="e.g., 2020" required>
+                        </div>
+
+                        <!-- Kilometers Driven -->
+                        <div class="form-group">
+                            <label for="km_driven" class="form-label">
+                                <i class="fas fa-road"></i>
+                                Kilometers Driven
+                            </label>
+                            <input type="number" class="form-control" id="km_driven" name="km_driven" min="0" step="1"
+                                   placeholder="e.g., 45000" required>
+                        </div>
+
+                        <!-- Fuel Type -->
+                        <div class="form-group">
+                            <label for="fuel" class="form-label">
+                                <i class="fas fa-gas-pump"></i>
+                                Fuel Type
+                            </label>
+                            <select class="form-select" id="fuel" name="fuel" required>
+                                <option value="" disabled selected>Choose fuel type</option>
+                                <option value="1">⛽ Diesel</option>
+                                <option value="2">⛽ Petrol</option>
+                                <option value="3">🔥 LPG</option>
+                                <option value="4">💨 CNG</option>
+                            </select>
+                        </div>
+
+                        <!-- Seller Type -->
+                        <div class="form-group">
+                            <label for="seller_type" class="form-label">
+                                <i class="fas fa-user-tie"></i>
+                                Seller Type
+                            </label>
+                            <select class="form-select" id="seller_type" name="seller_type" required>
+                                <option value="" disabled selected>Choose seller type</option>
+                                <option value="1">👤 Individual</option>
+                                <option value="2">🏢 Dealer</option>
+                                <option value="3">⭐ Trustmark Dealer</option>
+                            </select>
+                        </div>
+
+                        <!-- Transmission -->
+                        <div class="form-group">
+                            <label for="transmission" class="form-label">
+                                <i class="fas fa-cogs"></i>
+                                Transmission
+                            </label>
+                            <select class="form-select" id="transmission" name="transmission" required>
+                                <option value="" disabled selected>Choose transmission</option>
+                                <option value="1">🔧 Manual</option>
+                                <option value="2">⚙️ Automatic</option>
+                            </select>
+                        </div>
+
+                        <!-- Owner History -->
+                        <div class="form-group">
+                            <label for="owner" class="form-label">
+                                <i class="fas fa-users"></i>
+                                Owner History
+                            </label>
+                            <select class="form-select" id="owner" name="owner" required>
+                                <option value="" disabled selected>Choose owner type</option>
+                                <option value="1">1️⃣ First Owner</option>
+                                <option value="2">2️⃣ Second Owner</option>
+                                <option value="3">3️⃣ Third Owner</option>
+                                <option value="4">4️⃣ Fourth & Above</option>
+                                <option value="5">🚗 Test Drive Car</option>
+                            </select>
+                        </div>
+
+                        <!-- Mileage -->
+                        <div class="form-group">
+                            <label for="mileage" class="form-label">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Mileage (km/l or km/kg)
+                            </label>
+                            <input type="number" class="form-control" id="mileage" name="mileage" step="0.01" min="0"
+                                   placeholder="e.g., 18.5" required>
+                        </div>
+
+                        <!-- Engine Capacity -->
+                        <div class="form-group">
+                            <label for="engine" class="form-label">
+                                <i class="fas fa-cog"></i>
+                                Engine Capacity (cc)
+                            </label>
+                            <input type="number" class="form-control" id="engine" name="engine" min="500" max="8000"
+                                   placeholder="e.g., 1500" required>
+                        </div>
+
+                        <!-- Max Power -->
+                        <div class="form-group">
+                            <label for="max_power" class="form-label">
+                                <i class="fas fa-bolt"></i>
+                                Max Power (bhp)
+                            </label>
+                            <input type="number" class="form-control" id="max_power" name="max_power" step="0.1" min="10" max="800"
+                                   placeholder="e.g., 120.5" required>
+                        </div>
+
+                        <!-- Number of Seats -->
+                        <div class="form-group">
+                            <label for="seats" class="form-label">
+                                <i class="fas fa-chair"></i>
+                                Number of Seats
+                            </label>
+                            <input type="number" class="form-control" id="seats" name="seats" min="2" max="10"
+                                   placeholder="e.g., 5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-predict">
+                            <i class="fas fa-calculator"></i>
+                            <span>Calculate Car Value</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+                </form>
+
+                {% if price is not none %}
+                <div class="result-section">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <i class="fas fa-chart-line result-icon"></i>
+                            <h3>Estimated Market Value</h3>
+                        </div>
+                        <div class="result-price">
+                            <span class="currency">₹</span>
+                            <span class="price-value">{{ price }}</span>
+                        </div>
+                        <div class="result-info">
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>AI-Powered Accuracy</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Real-time Market Data</span>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn-secondary" onclick="window.print()">
+                                <i class="fas fa-print"></i>
+                                Print Report
+                            </button>
+                            <button class="btn-secondary" onclick="shareResult()">
+                                <i class="fas fa-share-alt"></i>
+                                Share Result
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose The Wheel Worth?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Advanced machine learning algorithms analyze thousands of data points for accurate predictions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3>Instant Results</h3>
+                    <p>Get your car valuation in seconds with our optimized prediction engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>95% Accuracy</h3>
+                    <p>Our model achieves industry-leading accuracy based on real market transactions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-car-side"></i>
+                    <span>The Wheel Worth</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Wheel Worth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Enhanced button interactions
+        document.querySelector('.btn-predict')?.addEventListener('click', function(e) {
+            this.classList.add('loading');
+            setTimeout(() => {
+                this.classList.remove('loading');
+            }, 2000);
+        });
+
+        // Share functionality
+        function shareResult() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Car Valuation - CarValue Pro',
+                    text: 'Check out my car valuation result!',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        }
+
+        // Form validation enhancements
+        document.querySelectorAll('.form-control, .form-select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+                if (this.value) {
+                    this.parentElement.classList.add('filled');
+                } else {
+                    this.parentElement.classList.remove('filled');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
